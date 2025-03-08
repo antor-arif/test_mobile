@@ -42,18 +42,51 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
         title: Text(widget.title),
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
         child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(10, (index) {
+                  return Container(
+                    height: 100,
+                    width: 100,
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    color: Colors.green,
+                  );
+                }),
+              ),
+            ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: TextStyle(
+                fontSize: 36.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.deepPurple,
+                letterSpacing: 2.0,
+                shadows: [
+                  Shadow(
+                    blurRadius: 10.0,
+                    color: Colors.black.withOpacity(0.5),
+                    offset: Offset(3.0, 3.0),
+                  ),
+                ],
+                fontFamily: 'Roboto',  // Custom font family
+              ),
+            ),
+            Column(
+              children: List.generate(25, (index) {
+                return Container(
+                  height: 100,
+                  width: 100,
+                  margin: const EdgeInsets.symmetric(vertical: 5),
+                  color: Colors.blue,
+                );
+              }),
             ),
           ],
         ),
